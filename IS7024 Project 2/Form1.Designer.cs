@@ -35,13 +35,13 @@
             this.queryResults = new System.Windows.Forms.RichTextBox();
             this.xpathQuery = new System.Windows.Forms.TextBox();
             this.xpathButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FileSelection
             // 
-            this.FileSelection.Location = new System.Drawing.Point(57, 26);
-            this.FileSelection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FileSelection.Location = new System.Drawing.Point(57, 95);
+            this.FileSelection.Margin = new System.Windows.Forms.Padding(2);
             this.FileSelection.Name = "FileSelection";
             this.FileSelection.Size = new System.Drawing.Size(77, 17);
             this.FileSelection.TabIndex = 0;
@@ -51,24 +51,24 @@
             // 
             // fileName
             // 
-            this.fileName.Location = new System.Drawing.Point(57, 47);
-            this.fileName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileName.Location = new System.Drawing.Point(57, 116);
+            this.fileName.Margin = new System.Windows.Forms.Padding(2);
             this.fileName.Name = "fileName";
             this.fileName.Size = new System.Drawing.Size(382, 20);
             this.fileName.TabIndex = 1;
             // 
             // fileLocation
             // 
-            this.fileLocation.Location = new System.Drawing.Point(137, 26);
-            this.fileLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileLocation.Location = new System.Drawing.Point(137, 95);
+            this.fileLocation.Margin = new System.Windows.Forms.Padding(2);
             this.fileLocation.Name = "fileLocation";
             this.fileLocation.Size = new System.Drawing.Size(301, 20);
             this.fileLocation.TabIndex = 2;
             // 
             // xmlView
             // 
-            this.xmlView.Location = new System.Drawing.Point(57, 82);
-            this.xmlView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xmlView.Location = new System.Drawing.Point(56, 163);
+            this.xmlView.Margin = new System.Windows.Forms.Padding(2);
             this.xmlView.Name = "xmlView";
             this.xmlView.Size = new System.Drawing.Size(382, 455);
             this.xmlView.TabIndex = 4;
@@ -76,8 +76,8 @@
             // 
             // queryResults
             // 
-            this.queryResults.Location = new System.Drawing.Point(578, 82);
-            this.queryResults.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.queryResults.Location = new System.Drawing.Point(1939, 154);
+            this.queryResults.Margin = new System.Windows.Forms.Padding(2);
             this.queryResults.Name = "queryResults";
             this.queryResults.Size = new System.Drawing.Size(417, 455);
             this.queryResults.TabIndex = 5;
@@ -85,16 +85,16 @@
             // 
             // xpathQuery
             // 
-            this.xpathQuery.Location = new System.Drawing.Point(661, 46);
-            this.xpathQuery.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xpathQuery.Location = new System.Drawing.Point(2022, 97);
+            this.xpathQuery.Margin = new System.Windows.Forms.Padding(2);
             this.xpathQuery.Name = "xpathQuery";
             this.xpathQuery.Size = new System.Drawing.Size(334, 20);
             this.xpathQuery.TabIndex = 6;
             // 
             // xpathButton
             // 
-            this.xpathButton.Location = new System.Drawing.Point(578, 45);
-            this.xpathButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.xpathButton.Location = new System.Drawing.Point(1939, 97);
+            this.xpathButton.Margin = new System.Windows.Forms.Padding(2);
             this.xpathButton.Name = "xpathButton";
             this.xpathButton.Size = new System.Drawing.Size(77, 18);
             this.xpathButton.TabIndex = 7;
@@ -102,20 +102,21 @@
             this.xpathButton.UseVisualStyleBackColor = true;
             this.xpathButton.Click += new System.EventHandler(this.xpathButton_Click);
             // 
-            // listView1
+            // label1
             // 
-            this.listView1.Location = new System.Drawing.Point(444, 180);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 97);
-            this.listView1.TabIndex = 8;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2090, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 543);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(2410, 879);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.xpathButton);
             this.Controls.Add(this.xpathQuery);
             this.Controls.Add(this.queryResults);
@@ -123,7 +124,7 @@
             this.Controls.Add(this.fileLocation);
             this.Controls.Add(this.fileName);
             this.Controls.Add(this.FileSelection);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -140,7 +141,7 @@
         private System.Windows.Forms.RichTextBox queryResults;
         private System.Windows.Forms.TextBox xpathQuery;
         private System.Windows.Forms.Button xpathButton;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
