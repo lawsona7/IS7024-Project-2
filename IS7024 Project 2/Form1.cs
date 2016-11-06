@@ -62,7 +62,7 @@ namespace IS7024_Project_2
             {
                 XPathExpression.Compile(xpathQuery.Text);
             }
-            catch(XPathException ex)
+            catch(XPathException)
             {
                 label1.Text=("That Syntax isn't quite right. If you need help click the help page in the right corner.");
             }
