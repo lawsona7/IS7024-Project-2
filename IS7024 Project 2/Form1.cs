@@ -25,7 +25,7 @@ namespace IS7024_Project_2
 
         OpenFileDialog ofd = new OpenFileDialog();
         XmlDocument xDoc = new XmlDocument();
-
+        string xmlfileName;
         private void FileSelection_Click(object sender, EventArgs e)
         {
             Stream xmlStream;
@@ -51,7 +51,7 @@ namespace IS7024_Project_2
                     }
                 }
             }
-            catch(System.IO.IOException)
+            catch (System.IO.IOException)
             {
                 MessageBox.Show("Please double check your file location");
             }
@@ -62,22 +62,119 @@ namespace IS7024_Project_2
             {
                 XPathExpression.Compile(xpathQuery.Text);
             }
-            catch(XPathException ex)
+            catch (XPathException ex)
             {
-                label1.Text=("That Syntax isn't quite right. If you need help click the help page in the right corner.");
+                label1.Text = ("That Syntax isn't quite right. If you need help click the help page in the right corner.");
             }
             try
             {
-                 var doc = XDocument.Load(ofd.FileName);         
-                 var get = doc.XPathSelectElements(xpathQuery.Text).Elements();
-                 var result = get.Select(x => x.Value);
-                 var stringList = string.Join(",", result.ToArray());
-                 queryResults.Text = stringList;
+                var doc = XDocument.Load(ofd.FileName);
+                var get = doc.XPathSelectElements(xpathQuery.Text).Elements();
+                var result = get.Select(x => x.Value);
+                var stringList = string.Join(",", result.ToArray());
+                queryResults.Text = stringList;
             }
             catch (System.IO.IOException)
             {
                 MessageBox.Show("Sorry but your file doesn't seem to be there anymore.");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void XPathQueryBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CommitXPath();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void CommitXPath()
+        {
+            XPathDocument doc = new XPathDocument(fileName.Text);
+            XPathNavigator nav = doc.CreateNavigator();
+
+            string result = "";
+            string resultType = "";
+
+            if (nav.Evaluate(txtXpath.Text).GetType().ToString() == "MS.Internal.Xml.XPath.XPathSelectionIterator")
+            {
+                XPathNodeIterator iterator = (XPathNodeIterator)nav.Evaluate(txtXpath.Text);
+
+                while (iterator.MoveNext())
+                {
+
+                    resultType = iterator.Current.InnerXml;
+                    switch (resultType)
+                    {
+                        case "InnerXml":
+                            resultType = iterator.Current.InnerXml;
+                            break;
+                        case "OuterXml":
+                            resultType = iterator.Current.OuterXml;
+                            break;
+                        case "Value":
+                            resultType = iterator.Current.Value;
+                            break;
+                    }
+
+                    result += string.Format("{0}\r\n", resultType);
+                }
+            }
+
+            else
+            {
+                result = string.Format("{0}\r\n", nav.Evaluate(txtXpath.Text));
+            }
+            result = string.Format("<xml>\r\n{0}</xml>", result);
+
+            //if (resultType == iterator.Current.Value)
+            //{
+            //    result = string.Format("<pre>\r\n{0}</pre>", result);
+            //}
+            //else
+            //{
+            //    result = string.Format("<xml>\r\n{0}</xml>", result);
+            //}
+            xmlQueryResults.Text = result;
+        }
+
+
+
+
+        private void txtXpath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xmlView_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileLocation_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
