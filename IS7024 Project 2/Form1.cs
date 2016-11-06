@@ -12,6 +12,7 @@ using System.Xml;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Xml.XPath;
+using System.Xml.Linq;
 
 namespace IS7024_Project_2
 {
@@ -24,7 +25,7 @@ namespace IS7024_Project_2
 
         OpenFileDialog ofd = new OpenFileDialog();
         XmlDocument xDoc = new XmlDocument();
-
+        private class Result { };
         private void FileSelection_Click(object sender, EventArgs e)
         {
             Stream xmlStream;
@@ -35,25 +36,26 @@ namespace IS7024_Project_2
                 {
 
 
-                        //assign text to text boxes
-                        fileName.Text = ofd.FileName;
-                        fileLocation.Text = ofd.SafeFileName;
+                    //assign text to text boxes
+                    fileName.Text = ofd.FileName;
+                    fileLocation.Text = ofd.SafeFileName;
 
 
 
-                        //read in text from xml file
-                        string xmlName = ofd.FileName;
-                        string xmlText = File.ReadAllText(xmlName);
-                        xmlView.Text = xmlText;
+                    //read in text from xml file
+                    string xmlName = ofd.FileName;
+                    string xmlText = File.ReadAllText(xmlName);
+                    xmlView.Text = xmlText;
                 }
             }
         }
-
         private void xpathButton_Click(object sender, EventArgs e)
         {
-            
-            XmlDocument 
-            queryResults.Text = xDoc.DocumentElement.OuterXml;
+            var doc = XDocument.Load(ofd.FileName);
+            var get = doc.XPathSelectElements(xpathQuery.Text).Elements();
+            var result = get.Select(x => x.Value);
+            var stringList = string.Join(",", result.ToArray());
+            queryResults.Text = stringList;
         }
     }
 }
