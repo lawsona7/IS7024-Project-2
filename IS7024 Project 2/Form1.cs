@@ -13,6 +13,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.Xml.XPath;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace IS7024_Project_2
 {
@@ -25,7 +26,7 @@ namespace IS7024_Project_2
 
         OpenFileDialog ofd = new OpenFileDialog();
         XmlDocument xDoc = new XmlDocument();
-        string xmlfileName;
+
         private void FileSelection_Click(object sender, EventArgs e)
         {
             Stream xmlStream;
@@ -56,29 +57,25 @@ namespace IS7024_Project_2
                 MessageBox.Show("Please double check your file location");
             }
         }
+
         private void xpathButton_Click(object sender, EventArgs e)
         {
             try
             {
                 XPathExpression.Compile(xpathQuery.Text);
-            }
-            catch (XPathException ex)
-            {
-                label1.Text = ("That Syntax isn't quite right. If you need help click the help page in the right corner.");
-            }
-            try
-            {
                 var doc = XDocument.Load(ofd.FileName);
                 var get = doc.XPathSelectElements(xpathQuery.Text).Elements();
                 var result = get.Select(x => x.Value);
                 var stringList = string.Join(",", result.ToArray());
                 queryResults.Text = stringList;
             }
-            catch (System.IO.IOException)
+
+            catch (XPathException ex)
             {
-                MessageBox.Show("Sorry but your file doesn't seem to be there anymore.");
+                label1.Text = ("That Syntax isn't quite right. If you need help click the help page in the right corner.");
             }
         }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -176,5 +173,6 @@ namespace IS7024_Project_2
         {
 
         }
+
     }
 }
